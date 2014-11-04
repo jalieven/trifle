@@ -1,0 +1,69 @@
+# general
+node:
+  name: default
+
+info:
+  app.name: Trifle
+  node.name: ${node.name}
+  build:
+    artifact: ${project.artifactId}
+    groupId: ${project.groupId}
+    description: ${project.description}
+    version: ${project.version}
+
+# nosql connectivity
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    keys:
+      weird-url-key: trifle-weird-url
+      error-key: trifle-error
+      duplicate-key: trifle-duplicate
+    cache:
+      default-expiration-seconds: 3600
+  data:
+    elasticsearch:
+      clusterNodes: localhost:9300
+
+# rest interface
+server:
+  port: 8080
+endpoints:
+  shutdown:
+    enabled: true
+
+# fetcher
+fetcher:
+  follow-redirects: true
+  user-agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML like Gecko) Chrome/37.0.2049.0 Safari/537.36
+  maximum:
+    redirects: 10
+    thread-pool-size: 1024
+    thread-pool-keepalive-seconds: 60
+    connections-per-host: 150
+    request-timeout-milliseconds: 60000
+  throttle:
+    connections-wait-milliseconds: 2147483647
+    connections-total: 1024
+
+# downloads
+downloads:
+  folder-location: file:/Users/janlievens/Downloads/trifle
+
+# actors
+actors:
+  fetch-actor-count: 4
+  download-actor-count: 4
+
+# start with clean slate
+clean:
+  redis: true
+  elasticsearch: true
+  downloads: true
+
+image-calculation:
+  digest-algoritm: MD5
+  metrics:
+    dimension: true
+    digest: true
