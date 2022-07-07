@@ -25,7 +25,7 @@
         <start-class>com.rizzo.trifle.boot.Trifle</start-class>
 
         <akka-version>2.3.6</akka-version>
-        <async-http-client-version>1.8.14</async-http-client-version>
+        <async-http-client-version>1.9.0</async-http-client-version>
         <elasticsearch-version>1.2.1</elasticsearch-version>
         <jsoup-version>1.8.1</jsoup-version>
         <commons-codec-version>1.8</commons-codec-version>
